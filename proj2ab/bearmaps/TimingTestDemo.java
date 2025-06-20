@@ -9,22 +9,32 @@ import edu.princeton.cs.algs4.Stopwatch;
  */
 public class TimingTestDemo {
     public static void main(String[] args) {
+
+        final long N = 10000000;
+        ArrayHeapMinPQ<Integer> test = new ArrayHeapMinPQ<>();
+
+        // add:
         long start = System.currentTimeMillis();
-        int sum = 0;
-        for (int i = 0; i < 100000; i += 1) {
-            for (int j = 0; j < 10000; j += 1) {
-                sum = sum + i + j;
-            }
+        for (int i = 0; i < N; i += 1) {
+            test.add(i, i);
         }
         long end = System.currentTimeMillis();
         System.out.println("Total time elapsed: " + (end - start)/1000.0 +  " seconds.");
 
+        // changePriority:
+        long start1 = System.currentTimeMillis();
+        for (int i = 0; i < N; i += 1) {
+            test.changePriority(i, -i);
+        }
+        long end1 = System.currentTimeMillis();
+        System.out.println("Total time elapsed: " + (end1 - start1)/1000.0 +  " seconds.");
+
+        // remove:
         Stopwatch sw = new Stopwatch();
-        for (int i = 0; i < 100000; i += 1) {
-            for (int j = 0; j < 10000; j += 1) {
-                sum = sum + i + j;
-            }
+        for (int i = 0; i < N; i += 1) {
+            test.removeSmallest();
         }
         System.out.println("Total time elapsed: " + sw.elapsedTime() +  " seconds.");
+
     }
 }

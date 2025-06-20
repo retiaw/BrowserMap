@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  *  @author Matt Owen @since 03-11-19 */
 public class NaiveMinPQ<T> implements ExtrinsicMinPQ<T> {
 
-    private ArrayList<PriorityNode> items;
+    ArrayList<PriorityNode> items;
 
     public NaiveMinPQ() {
         items = new ArrayList<>();
@@ -67,7 +67,7 @@ public class NaiveMinPQ<T> implements ExtrinsicMinPQ<T> {
         return items.indexOf(new PriorityNode(elem, 0));
     }
 
-    private class PriorityNode implements Comparable<PriorityNode> {
+    class PriorityNode implements Comparable<PriorityNode> {
         private T item;
         private double priority;
 
